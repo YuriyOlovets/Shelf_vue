@@ -54,6 +54,9 @@ export default {
       if (localStorage.getItem("auth_token")) {
         return true
       }
+      else {
+        return false
+      }
     }
   },
   methods: {

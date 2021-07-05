@@ -31,7 +31,6 @@
               </tbody>
             </table>
             <Cells v-if="TrueShelf"> </Cells>
-            <div></div>
 
 
 
@@ -64,9 +63,6 @@ export default {
     TrueShelf() {
       if (this.Shelf.length > 0) {
         return true
-      }
-      else {
-        return false
       }
     }
   },

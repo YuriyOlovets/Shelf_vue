@@ -31,6 +31,7 @@
               </tbody>
             </table>
             <Cells v-if="TrueShelf"> </Cells>
+            <div></div>
 
 
 

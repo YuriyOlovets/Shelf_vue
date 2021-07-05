@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <main  class="tm-main">
       <div class="row">
-        <div class="col-md-3 col-sm-6" v-for="product in Categorys">
+        <div class="col-md-3 col-sm-6" v-for="product in Categorys" :key="product.id">
           <div class="product-grid">
             <div class="product-image">
               <a @click="toMenu(product.id)" class="image">

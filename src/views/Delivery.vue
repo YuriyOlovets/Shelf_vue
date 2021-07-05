@@ -10,7 +10,7 @@
       <th>Вес</th>
     </tr>
     </thead>
-    <tbody v-for="prod in Delivery.product" >
+    <tbody v-for="prod in Delivery.product" :key="prod.id" >
     <tr class="active-row">
       <td>{{prod}}</td>
       <td><img class="photo" :src="prod.product_image" alt=""></td>

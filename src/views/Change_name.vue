@@ -18,7 +18,6 @@
 
     </main>
   </div>
-  </div>
 </template>
 
 <script>
@@ -47,7 +46,7 @@ export default {
         data:{
           name: this.product
         },
-      }).catch(err => this.problem = 1 )
+      }).catch(this.problem = 1 )
       if (this.problem === 1){
         alert('Сделайте выбор из выпадающего списка пожалуйста.')
       }else {

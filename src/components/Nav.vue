@@ -15,13 +15,13 @@
             Мои полки
           </a></li>
 
-          <li v-if="auth" class="tm-nav-item"><a @click="goMenu" href="#" class="tm-nav-link">
+          <li v-if="is_auth" class="tm-nav-item"><a @click="goMenu" href="#" class="tm-nav-link">
             <i class="fas fa-users"></i>
             Мое меню
           </a></li>
 
 
-          <li class="tm-nav-item" v-if="!auth"><a @click="goLogin" href="#" class="tm-nav-link" >
+          <li class="tm-nav-item" v-if="!is_auth"><a @click="goLogin" href="#" class="tm-nav-link" >
             <i  class="fas fa-pen"></i>
             Войти</a>
           </li>
@@ -50,7 +50,7 @@ export default {
   },
   computed: {
 
-    auth() {
+    is_auth() {
       if (localStorage.getItem("auth_token")) {
         return true
       }

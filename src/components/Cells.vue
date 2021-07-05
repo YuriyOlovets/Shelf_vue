@@ -27,8 +27,6 @@
 
 <script>
 import axios from "axios";
-import Change_name from "../views/Change_name";
-
 export default {
   name: "Cells",
   data(){

@@ -8,8 +8,8 @@
           </div>
         </div>
         <div class="col-8 row tm-row" >
-          <article class="col-12   tm-post">
-            <table class="styled-table" v-if="TrueShelf" v-for="shelf in Shelf" :key="shelf.id">
+          <article v-if="TrueShelf" class="col-12   tm-post">
+            <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
 
               <thead>
               <tr class="active-row">

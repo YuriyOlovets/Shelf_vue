@@ -18,7 +18,6 @@ import Vue from "vue";
 import {AutoCompletePlugin} from "@syncfusion/ej2-vue-dropdowns";
 Vue.use(AutoCompletePlugin);
 import Nav from "./components/Nav";
-import axios from 'axios'
 export default {
   components: {Nav},
   created() {

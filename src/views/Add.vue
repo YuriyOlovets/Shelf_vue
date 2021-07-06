@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       add: '',
+      info:'',
     }
   },
   methods: {
@@ -39,8 +40,17 @@ export default {
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
-      })
-      ;this.$router.push({name: "Home"})
+      }).then(response => (this.info = response))
+           .catch(error => {
+             console.log(error)})
+
+     if(this.info.status === 200){
+       this.$router.push({name: "Home"})
+     }
+     else {
+       alert("Вы ввели неправильный id полки,попробуйте еще")
+     }
+
     },
 
   }

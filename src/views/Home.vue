@@ -8,7 +8,8 @@
           </div>
         </div>
         <div class="col-8 row tm-row" >
-          <article v-if="TrueShelf" class="col-12   tm-post">
+          <article class="col-12   tm-post">
+            <div>
             <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
 
               <thead>
@@ -30,9 +31,8 @@
 
               </tbody>
             </table>
+            </div>
             <Cells v-if="TrueShelf"> </Cells>
-
-
 
             <a href="#" v-if="!TrueShelf"> <button @click="goAdd" class="myButton">Добавить новую полку</button></a>
 
@@ -53,6 +53,7 @@ export default {
   components: {Cells},
   data(){
     return{
+      check_login:localStorage.getItem("auth_token"),
       Shelf : [],
       Cells:[],
       cell_id:null,
@@ -63,6 +64,9 @@ export default {
     TrueShelf() {
       if (this.Shelf.length > 0) {
         return true
+      }
+      else{
+        return false
       }
     }
   },
@@ -103,13 +107,16 @@ export default {
     },
     formatDate(str) {
       return str ? new Date(str).toLocaleString() : ""
+    },
+    check_log(){
+      if(!this.check_login){
+      }
     }
+
   },
-
   created() {
+
     this.loadShelf()
-
-
 
 
   }

@@ -46,7 +46,8 @@ export default {
         data:{
           name: this.product
         },
-      }).catch(this.problem = 1 )
+      }).catch(error => {this.problem = 1})
+      console.log(this.problem)
       if (this.problem === 1){
         alert('Сделайте выбор из выпадающего списка пожалуйста.')
       }else {

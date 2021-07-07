@@ -87,18 +87,6 @@ export default {
     goAdd() {
       this.$router.push({name: "add"})
     },
-    async LoadIdent(){
-      this.cell_id = await axios({
-        method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem("auth_token")
-        }
-      }).then(response => response.data[0]['ident'])
-      localStorage.setItem("cell", this.cell_id)
-
-
-    },
 
     async Delete(ident)
     {
@@ -118,8 +106,7 @@ export default {
 
   },
   created() {
-    this.LoadIdent()
-    console.log(localStorage)
+
     this.loadShelf()
 
 

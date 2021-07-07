@@ -37,24 +37,13 @@ export default {
   },
   methods:{
     async LoadIdent(){
-      this.cell_id = await axios({
-        method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem("auth_token")
-        }
-      }).then(response => response.data[0]['ident'])
-      if (this.cell_id){
         this.Cells = await axios({
           method: 'get',
-          url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/'+this.cell_id,
+          url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/1',
           headers: {
             Authorization: 'Token ' + localStorage.getItem("auth_token")
           }
         }).then(response => response.data);
-      }
-
-
     },
     goChange(ident,name){
       this.$router.push({name:'change', params:{ident:ident,name:name}})

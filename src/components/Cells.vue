@@ -49,16 +49,10 @@ export default {
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
-      }).then(response => response.data[0]['ident']);
-      if(this.cell_id){
-        this.Cells = await axios({
-          method: 'get',
-          url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/' + this.cell_id,
-          headers: {
-            Authorization: 'Token ' + localStorage.getItem("auth_token")
-          }
-        }).then(response => response.data);
-      }
+      }).then(response => response.data[0]['ident'])
+      console.log(this.cell_id)
+      this.LoadCells()
+
     },
     async LoadCells() {
       this.Cells = await axios({
@@ -72,12 +66,7 @@ export default {
   },
 
   created() {
-
-    this.LoadIdent()
-
-
-
-
+  this.LoadIdent()
 
   }
 

@@ -66,8 +66,7 @@ export default {
   },
 
   async created() {
-    await this.LoadIdent();
-    await this.LoadCells();
+    this.LoadCells()
     }
 
 }

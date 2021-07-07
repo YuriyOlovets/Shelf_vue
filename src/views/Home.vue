@@ -3,11 +3,11 @@
       <main class="tm-main">
         <!-- Search form -->
         <div class="row tm-row">
-          <div v-if="TrueShelf" class="col-12 col-md-6 " >
+          <div v-if="TrueShelf" class="col-12" >
             <h2 class="main">Моя полка:</h2>
           </div>
         </div>
-        <div class="col-8 row tm-row" >
+        <div class="col-4 row tm-row" >
           <article class="col-12   tm-post">
             <div>
             <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
@@ -94,7 +94,9 @@ export default {
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
-      }).then(response => response.data[0]['ident'])
+      }).then(response => response.data[0]['ident']).then(response => {
+        this.loadShelf()
+      })
     },
 
     async Delete(ident)

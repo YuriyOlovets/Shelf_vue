@@ -94,9 +94,10 @@ export default {
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
-      }).then(response => response.data[0]['ident']).then(response => {
+      }).then(response => response.data[0]['ident'])
         this.loadShelf()
-      })
+        localStorage.setItem("cells", this.cell_id)
+
     },
 
     async Delete(ident)
@@ -117,8 +118,8 @@ export default {
 
   },
   created() {
-
-    this.loadShelf()
+    console.log(localStorage)
+    this.LoadIdent()
 
 
   }

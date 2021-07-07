@@ -43,17 +43,6 @@ export default {
     goHistory(id) {
       this.$router.push({name: 'history', params: {id: id}})
     },
-    async LoadIdent() {
-      this.cell_id = await axios({
-        method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem("auth_token")
-        }
-      }).then(response => response.data[0]['ident'])
-
-
-    },
     async LoadCells() {
       this.Cells = await axios({
         method: 'get',

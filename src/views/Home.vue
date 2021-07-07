@@ -95,8 +95,7 @@ export default {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
       }).then(response => response.data[0]['ident'])
-        this.loadShelf()
-        localStorage.setItem("cells", this.cell_id)
+
 
     },
 
@@ -119,7 +118,7 @@ export default {
   },
   created() {
     console.log(localStorage)
-    this.LoadIdent()
+    this.loadShelf()
 
 
   }

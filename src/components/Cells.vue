@@ -35,25 +35,48 @@ export default {
       cell_id:false,
     }
   },
-  methods:{
-    async LoadIdent(){
+  methods: {
+    goChange(ident, name) {
+      this.$router.push({name: 'change', params: {ident: ident, name: name}})
+    },
+    goHistory(id) {
+      this.$router.push({name: 'history', params: {id: id}})
+    },
+    async LoadIdent() {
+      this.cell_id = await axios({
+        method: 'get',
+        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem("auth_token")
+        }
+      }).then(response => response.data[0]['ident']);
+      if(this.cell_id){
         this.Cells = await axios({
           method: 'get',
-          url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/1',
+          url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/' + this.cell_id,
           headers: {
             Authorization: 'Token ' + localStorage.getItem("auth_token")
           }
         }).then(response => response.data);
+      }
     },
-    goChange(ident,name){
-      this.$router.push({name:'change', params:{ident:ident,name:name}})
+    async LoadCells() {
+      this.Cells = await axios({
+        method: 'get',
+        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/' + this.cell_id,
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem("auth_token")
+        }
+      }).then(response => response.data);
     },
-    goHistory(id){
-      this.$router.push({name:'history', params:{id:id}})
-    }
   },
+
   created() {
-    this.LoadIdent();
+
+    this.LoadIdent()
+
+
+
 
 
   }

@@ -3,17 +3,15 @@
   <table class="styled-table">
     <thead >
     <tr>
-      <th style="max-width: 15px">id</th>
-      <th></th>
+      <th style="max-width: 15px"></th>
       <th>Продукт</th>
-
       <th>Вес</th>
     </tr>
     </thead>
-    <tbody v-for="prod in Delivery.product" :key="prod.id" >
+    <tbody v-for="prod in Delivery" :key="prod.id" >
     <tr class="active-row">
-      <td>{{prod}}</td>
-      <td><img class="photo" :src="prod.product_image" alt=""></td>
+      <td><img class="photo" :src="prod.product[0].product_image"></td>
+      <td>{{prod.product[0].product_name}}</td>
       <td>1000г<br></td>
     </tr>
     </tbody>
@@ -29,6 +27,8 @@ export default {
   data(){
     return{
       Delivery: [],
+      Delivery_list:[],
+      i:'',
 
     }
   },
@@ -41,12 +41,12 @@ export default {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
       }).then(response => response.data);
-      console.log(this.Delivery[0])
+
     },
   },
   created() {
-
     this.LoadDelivery()
+
   }
 }
 </script>

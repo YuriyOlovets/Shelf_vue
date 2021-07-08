@@ -36,7 +36,9 @@ export default {
           username: this.login,
           password: this.password
         },
-      }).then(response => (this.response = response));
+      }).then(response => (this.response = response))
+      .then(response => (alert('Регистрация успешна'))).catch(error => {alert('Пароль должен вмещать минимум 8 символов')})
+
       this.$router.push({name: "Home"})
     },
 

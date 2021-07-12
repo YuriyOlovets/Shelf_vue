@@ -1,9 +1,9 @@
 <template>
   <main class="tm-main">
-  <table class="styled-table">
-    <thead >
+  <table style="width: 350px" class="styled-table">
+    <thead>
     <tr>
-      <th style="max-width: 15px"></th>
+      <th></th>
       <th>Продукт</th>
       <th>Вес</th>
     </tr>
@@ -16,6 +16,7 @@
     </tr>
     </tbody>
   </table>
+    <button style="width: 300px" class="myButton">Заказать</button>
   </main>
 </template>
 

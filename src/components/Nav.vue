@@ -19,14 +19,18 @@
             <i class="fas fa-users"></i>
             Мое меню
           </a></li>
+          <li class="tm-nav-item" v-if="is_auth"><a @click="goDelivery" href="#" class="tm-nav-link" >
+            <i  class="fas fa-pen"></i>
+            Заказ</a>
+          </li>
 
 
           <li class="tm-nav-item" v-if="!is_auth"><a @click="goLogin" href="#" class="tm-nav-link" >
-            <i  class="fas fa-pen"></i>
+            <i></i>
             Войти</a>
           </li>
-          <li class="tm-nav-item" v-else><a @click="goLogout" href="#" class="tm-nav-link" >
-            <i  class="fas fa-pen"></i>
+          <li class="tm-nav-item" v-if="is_auth"><a @click="goLogout" href="#" class="tm-nav-link" >
+            <i ></i>
             Выйти</a>
           </li>
 
@@ -72,6 +76,10 @@ export default {
     },
     goMenu() {
       this.$router.push({name: "category"})
+      this.slide = false
+    },
+    goDelivery() {
+      this.$router.push({name: "delivery"})
       this.slide = false
     },
     slider(){

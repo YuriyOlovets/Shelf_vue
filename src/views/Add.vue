@@ -33,7 +33,7 @@ export default {
     async AddShelf() {
        await axios({
         method: 'post',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/add/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/add/',
         data:{
           ident: this.add
         },

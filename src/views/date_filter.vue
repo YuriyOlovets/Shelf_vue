@@ -52,7 +52,7 @@ export default {
     async LoadDay() {
        this.Day = await axios({
         method: 'post',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/date/' + this.cell + '/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/date/' + this.cell + '/',
         data:{
           date:this.day
         }

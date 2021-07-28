@@ -42,7 +42,7 @@ export default {
       this.problem = 'ddd'
       await axios({
         method: 'post',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/redact/'+ this.ident+'/'+this.name+'/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/redact/'+ this.ident+'/'+this.name+'/',
         data:{
           name: this.product
         },
@@ -59,7 +59,7 @@ export default {
     async LoadProducts(){
       this.product_list = await axios({
         method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/products/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/products/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }

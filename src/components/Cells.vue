@@ -46,7 +46,7 @@ export default {
     async LoadCells() {
       this.Cells = await axios({
         method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/cells/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/cells/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }

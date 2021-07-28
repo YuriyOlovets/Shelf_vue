@@ -45,7 +45,7 @@ export default {
     async LoadMenu(){
       this.Menu = await axios({
         method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/menu/'+ this.category+ '/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/menu/'+ this.category+ '/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }

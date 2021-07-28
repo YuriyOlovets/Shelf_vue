@@ -77,7 +77,7 @@ export default {
     this.Shelf = await
         axios({
         method: 'get',
-        url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/shelf/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/shelf/',
         headers: {
           Authorization: 'Token '+ localStorage.getItem("auth_token")
         }
@@ -92,7 +92,7 @@ export default {
     {
       await axios({
             method: 'get',
-            url: 'https://smart-shelf-fe863.ondigitalocean.app/api/v1/delete/'+ ident,
+            url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/delete/'+ ident,
           });
       location.reload()
     },

@@ -92,7 +92,7 @@ export default {
     {
       await axios({
             method: 'get',
-            url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/delete/'+ ident,
+            url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/delete/'+ ident + '/' ,
           });
       location.reload()
     },

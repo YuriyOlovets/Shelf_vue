@@ -58,7 +58,7 @@ export default {
     async LoadHistory() {
       this.History = await axios({
         method: 'get',
-        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/history/' + this.id + '/',
+        url: this.$store.getters.getServerUrl +'/history/' + this.id + '/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }

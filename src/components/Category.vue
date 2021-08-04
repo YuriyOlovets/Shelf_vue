@@ -36,7 +36,7 @@ export default {
     async LoadCategory(){
       this.Categorys = await axios({
         method: 'get',
-        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/category/',
+        url: this.$store.getters.getServerUrl + '/category/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }

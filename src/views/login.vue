@@ -40,11 +40,9 @@ export default {
           password: this.password
         },
         success: (response) => {
-          console.log(response.auth_token)
-          alert("Спасибо что Вы с нами")
           localStorage.setItem("auth_token", response.auth_token)
-          location.reload();
           this.$router.push({name: "Home"})
+          location.reload();
         },
         error: (response) => {
           if (response.status === 400) {

@@ -11,6 +11,7 @@ import Category from "../components/Category";
 import Menu from "../components/Menu";
 import Delivery from "../views/Delivery";
 import Register from "../views/Register";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -80,7 +81,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+    mode: 'history',
+    routes
 })
 
 export default router
+

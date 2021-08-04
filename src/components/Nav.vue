@@ -5,8 +5,7 @@
         <i class="fas fa-bars" ></i>
       </button>
       <div class="tm-site-header">
-        <div class="mb-3 mx-auto tm-site-logo" ><i style="text-shadow: 0 0 15px;">S</i></div>
-        <h1 class="text-center" style="color: #008c8c; font-weight: bold; text-shadow: 0 0 15px">Smart Shelf</h1>
+        <h1 class="text-center" style="color: #008c8c; font-weight: bold;">Smart Shelf</h1>
       </div>
       <nav class="tm-nav"  id="tm-nav">
         <ul>

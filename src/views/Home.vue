@@ -1,42 +1,45 @@
 <template>
 
-      <main class="tm-main">
+      <main class="tm-main " >
         <!-- Search form -->
         <div class="row tm-row">
           <div v-if="TrueShelf" class="col-12" >
-            <h2 class="main">Моя полка:</h2>
+            <h2 class="main">My products:</h2>
           </div>
-        </div>
-        <div class="col-4 row tm-row" >
-          <article class="col-12   tm-post">
-            <div>
-            <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
-
-              <thead>
-              <tr class="active-row">
-                <th>ID полки</th>
-                <th>Последнее соединение</th>
-                <th>Отвязать</th>
-
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td><a>{{shelf.ident}}</a></td>
-                <td>{{formatDate(shelf.last_connect)}}</td>
-                <td ><a href="#" style="color:red"><button @click="Delete(shelf.ident)" class="myButton">Отвязать полку</button></a></td>
-
-
-              </tr>
-
-              </tbody>
-            </table>
-            </div>
             <Cells v-if="TrueShelf"> </Cells>
 
             <a href="#" v-if="!TrueShelf"> <button @click="goAdd" class="myButton">Добавить новую полку</button></a>
 
-          </article>
+<!--                    <div v-if="TrueShelf" class="col-12" >-->
+<!--                      <h2 class="main">Мои продукты:</h2>-->
+<!--                    </div>-->
+                  </div>
+                  <div class="col-4 row tm-row" >
+                    <article class="col-12   tm-post">
+                      <div>
+                      <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
+
+                        <thead>
+                        <tr class="active-row">
+                          <th>ID полки</th>
+                          <th>Последнее соединение</th>
+                          <th>Отвязать</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td><a>{{shelf.ident}}</a></td>
+                          <td>{{formatDate(shelf.last_connect)}}</td>
+                          <td ><a href="#" style="color:red"><button @click="Delete(shelf.ident)" class="myButton">Отвязать полку</button></a></td>
+
+
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      </div>
+                    </article>
         </div>
 
       </main>
@@ -53,7 +56,6 @@ export default {
   components: {Cells},
   data(){
     return{
-      check_login:localStorage.getItem("auth_token"),
       Shelf : [],
       Cells:[],
       cell_id:null,
@@ -77,7 +79,7 @@ export default {
     this.Shelf = await
         axios({
         method: 'get',
-        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/shelf/',
+        url: this.$store.getters.getServerUrl +'/shelf/',
         headers: {
           Authorization: 'Token '+ localStorage.getItem("auth_token")
         }
@@ -92,21 +94,25 @@ export default {
     {
       await axios({
             method: 'get',
-            url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/delete/'+ ident + '/' ,
+            url: this.$store.getters.getServerUrl + '/delete/'+ ident,
           });
       location.reload()
     },
     formatDate(str) {
       return str ? new Date(str).toLocaleString() : ""
     },
-    check_log(){
-      if(!this.check_login){
+    login_check() {
+      if (localStorage.getItem("auth_token")) {
+        console.log(localStorage.getItem("auth_token"))
       }
-    }
+      else {
+        this.$router.push({name: "login"})
+      }
+    },
 
   },
   created() {
-
+    this.login_check()
     this.loadShelf()
 
 

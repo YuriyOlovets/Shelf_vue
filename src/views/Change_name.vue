@@ -42,7 +42,7 @@ export default {
       this.problem = 'ddd'
       await axios({
         method: 'post',
-        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/redact/'+ this.ident+'/'+this.name+'/',
+        url: this.$store.getters.getServerUrl +'/redact/'+ this.ident+'/'+this.name+'/',
         data:{
           name: this.product
         },

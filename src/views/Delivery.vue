@@ -37,7 +37,7 @@ export default {
     async LoadDelivery(){
       this.Delivery = await axios({
         method: 'get',
-        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/delivery/',
+        url: this.$store.getters.getServerUrl +'/delivery/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }

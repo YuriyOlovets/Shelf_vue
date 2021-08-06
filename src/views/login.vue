@@ -33,7 +33,7 @@ export default {
     setLogin() {
 
       $.ajax({
-        url: "https://smart-shelf-bbc6g.ondigitalocean.app/auth/token/login/",
+        url: "http://165.22.85.132/auth/token/login/",
         type: "POST",
         data: {
           username: this.login,

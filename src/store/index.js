@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        backendUrl: "http://165.22.85.132/api/v1"
+        backendUrl: "http://167.99.247.26/api/v1"
     },
     mutations: {},
     actions: {},

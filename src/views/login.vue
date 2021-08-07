@@ -33,7 +33,7 @@ export default {
     setLogin() {
 
       $.ajax({
-        url: "http://165.22.85.132/api/auth/token/login/",
+        url: "http://167.99.247.26/api/auth/token/login/",
         type: "POST",
         data: {
           username: this.login,

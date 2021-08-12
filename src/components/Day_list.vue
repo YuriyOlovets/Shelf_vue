@@ -4,11 +4,10 @@
       <!-- Search form -->
       <div class="row tm-row">
         <div class="col-12" >
-          <h2 class="main"></h2>
+          <h2 class="main">Історія ячейки по днях</h2>
         </div>
       </div>
       <br>
-      <a href='#'><button class="myButton">Просмотр по дням</button></a>
       <br><br>
 
       <div  class="row tm-row">
@@ -42,7 +41,7 @@ import axios from "axios";
 
 export default {
   name: "list",
-  props: ['list'],
+  props: ['list','name'],
   data(){
     return{
       List:[]

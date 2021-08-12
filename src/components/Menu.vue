@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <main  class="tm-main">
+    <main v-if="Language"  class="tm-main">
       <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
           <div class="col-md-10">
@@ -25,6 +25,32 @@
         </div>
       </div>
     </main>
+
+    <main v-if="Language"  class="tm-main">
+      <div class="container d-flex justify-content-center mt-50 mb-50">
+        <div class="row">
+          <div class="col-md-10">
+            <div v-for="dishes in Menu" :key="dishes.id" class="card card-body">
+              <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                <div class="mr-2 mb-3 mb-lg-0"> <img :src="dishes.image" width="250" height="200" alt=""> </div>
+                <div class="media-body">
+                  <h6 class="media-title font-weight-semibold"> <a href="#" data-abc="true">{{dishes.dish_name_en}}</a> </h6>
+                  <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{dishes.category}}</a></li>
+                  </ul>
+                  <p class="mb-3">{{dishes.describe_en}}</p>
+                </div>
+                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                  <a :href="dishes.recipe">
+                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Рецепт</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -39,6 +65,14 @@ export default {
       Menu:[],
       Category_menu:[],
 
+    }
+  },
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
     }
   },
   methods:{

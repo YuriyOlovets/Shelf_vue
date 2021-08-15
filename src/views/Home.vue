@@ -160,8 +160,6 @@ export default {
   created() {
     this.login_check()
     this.loadShelf()
-    console.log(localStorage)
-
   }
 }
 

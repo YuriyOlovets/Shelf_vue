@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container-fluid">
+  <div v-if="Language" class="container-fluid">
     <main  class="tm-main">
       <div class="row">
         <div class="col-md-3 col-sm-6" v-for="product in Categorys" :key="product.id">
@@ -19,6 +19,26 @@
       </div>
     </main>
   </div>
+
+  <div v-else class="container-fluid">
+    <main  class="tm-main">
+      <div class="row">
+        <div class="col-md-3 col-sm-6" v-for="product in Categorys" :key="product.id">
+          <div class="product-grid">
+            <div class="product-image">
+              <a @click="toMenu(product.id)" class="image">
+                <img class="pic-1" :src="product.image">
+                <img class="pic-2" :src="product.image">
+              </a>
+            </div>
+            <div class="product-content">
+              <h3 class="title"><a @click="toMenu(product.id)">{{product.category_en}}</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -30,6 +50,14 @@ export default {
     return{
       Categorys:[],
 
+    }
+  },
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
     }
   },
   methods:{

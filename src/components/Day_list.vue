@@ -15,7 +15,7 @@
           <table>
             <thead >
             <tr>
-              <th>Вес</th>
+              <th>Вага</th>
               <th>Дата</th>
             </tr>
             </thead>
@@ -35,7 +35,7 @@
     </main>
   </div>
 
-  <div v-if="!Language" class="container-fluid">
+  <div v-else-if="!Language" class="container-fluid">
     <main class="tm-main">
       <!-- Search form -->
       <div class="row tm-row">

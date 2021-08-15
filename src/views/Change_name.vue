@@ -90,14 +90,11 @@ export default {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
       }).then(response => response.data);
-      for (i in this.product_list){
-        console.log(this.i)
-      }
-
     },
   },
   created() {
     this.LoadProducts()
+    console.log(this.product_list)
   }
 
 

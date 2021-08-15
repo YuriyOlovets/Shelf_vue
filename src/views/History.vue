@@ -1,17 +1,17 @@
 <template>
   <div class="container-fluid">
-    <main class="tm-main">
+    <main v-if="Language" class="tm-main">
       <!-- Search form -->
       <div class="row tm-row">
         <div class="col-12" >
           <h2 class="main">{{name}}</h2>
         </div>
       </div>
-        <h3>Выбрать дату:</h3>
+        <h3>Виберіть дату:</h3>
         <input v-model="day"  type="date" id="start" name="date" >
-        <button @click="goDate(day,id)" type="submit" class="myButton">Смотреть</button>
+        <button @click="goDate(day,id)" type="submit" class="myButton">Переглянути</button>
       <br>
-      <button @click="goDayList(id,name)" class="myButton">Просмотр по дням</button>
+      <button @click="goDayList(id,name)" class="myButton">Перегляд по днях</button>
       <br><br>
 
       <div  class="row tm-row">
@@ -19,7 +19,7 @@
           <table>
             <thead >
             <tr>
-              <th>Вес</th>
+              <th>Вага</th>
               <th>Дата</th>
             </tr>
             </thead>
@@ -37,6 +37,45 @@
       </div>
 
     </main>
+
+    <main v-else-if="!Language" class="tm-main">
+      <!-- Search form -->
+      <div class="row tm-row">
+        <div class="col-12" >
+          <h2 class="main">{{name}}</h2>
+        </div>
+      </div>
+      <h3>Choose date:</h3>
+      <input v-model="day"  type="date" id="start" name="date" >
+      <button @click="goDate(day,id)" type="submit" class="myButton">View</button>
+      <br>
+      <button @click="goDayList(id,name)" class="myButton">View by day</button>
+      <br><br>
+
+      <div  class="row tm-row">
+        <article class="col-12 col-md-6 tm-post">
+          <table>
+            <thead >
+            <tr>
+              <th>Weight</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="cell in History" :key="cell.id">
+              <td>{{cell.weight}}</td>
+              <td>{{cell.update_time}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </article>
+
+      </div>
+
+    </main>
+
   </div>
 
 </template>
@@ -53,7 +92,14 @@ export default {
       day:''
     }
   },
-
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
+    }
+  },
   methods: {
     async LoadHistory() {
       this.History = await axios({

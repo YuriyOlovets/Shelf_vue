@@ -1,6 +1,6 @@
 <template>
-  <div v-if="Language" class="container-fluid">
-    <main  class="tm-main">
+  <div class="container-fluid">
+    <main v-if="Language"  class="tm-main">
       <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
           <div class="col-md-10">
@@ -25,10 +25,9 @@
         </div>
       </div>
     </main>
-  </div>
 
-  <div v-else class="container-fluid">
-    <main  class="tm-main">
+
+    <main v-else-if="!Language"  class="tm-main">
       <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
           <div class="col-md-10">
@@ -44,7 +43,7 @@
                 </div>
                 <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
                   <a :href="dishes.recipe">
-                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Recipe</button>
+                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i>Recipe</button>
                   </a>
                 </div>
               </div>
@@ -54,6 +53,7 @@
       </div>
     </main>
   </div>
+
 </template>
 
 <script>
@@ -93,7 +93,7 @@ export default {
   },
   created() {
    this.LoadMenu();
-   console.log(this.Language)
+   console.log(this.Menu)
 
   }
   }

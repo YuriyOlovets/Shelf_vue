@@ -1,40 +1,22 @@
 <template>
   <main class="tm-main">
-  <table v-if="Language"  style="width: 350px" class="styled-table">
+  <table style="width: 350px" class="styled-table">
     <thead>
     <tr>
       <th></th>
       <th>Продукт</th>
-      <th>Вага</th>
+      <th>Вес</th>
     </tr>
     </thead>
     <tbody v-for="prod in Delivery" :key="prod.id" >
     <tr class="active-row">
       <td><img class="photo" :src="prod.product[0].product_image"></td>
-      <td>{{prod.product[0].product_name_}}</td>
+      <td>{{prod.product[0].product_name}}</td>
       <td>1000г<br></td>
     </tr>
     </tbody>
   </table>
-    <table v-else  style="width: 350px" class="styled-table">
-      <thead>
-      <tr>
-        <th></th>
-        <th>Product</th>
-        <th>Weight</th>
-      </tr>
-      </thead>
-      <tbody v-for="prod in Delivery" :key="prod.id" >
-      <tr class="active-row">
-        <td><img class="photo" :src="prod.product[0].product_image"></td>
-        <td>{{prod.product[0].product_name_en}}</td>
-        <td>1000g<br></td>
-      </tr>
-      </tbody>
-    </table>
-
-    <button v-if="Language" style="width: 300px" class="myButton">Замовити</button>
-    <button v-else style="width: 300px" class="myButton">To order</button>
+    <button style="width: 300px" class="myButton">Заказать</button>
   </main>
 </template>
 
@@ -50,15 +32,6 @@ export default {
       i:'',
 
     }
-  },
-  computed: {
-    Language(){
-      if (localStorage.getItem('language')==='en')
-        return false
-      else
-        return true
-    }
-
   },
   methods:{
     async LoadDelivery(){

@@ -1,54 +1,25 @@
 <template>
-  <table v-if="Language" class="styled-table">
+  <table class="styled-table">
     <thead >
     <tr>
       <th style="max-width: 15px">id</th>
       <th></th>
       <th>Продукт</th>
 
-      <th>Вага</th>
+      <th>Вес</th>
     </tr>
     </thead>
     <tbody v-for="cell in Cells" :key="cell.id">
     <tr class="active-row">
       <td>{{cell.cell_number}}</td>
-      <td ><img class="photo" :src="cell.cell_description.product_image" alt=""></td>
-
+      <td><img class="photo" :src="cell.cell_description.product_image" alt=""></td>
       <td>{{cell.cell_description.product_name}}<br><br><button style="position: relative;
     left: 50%;
-    transform: translate(-50%, 0);" class="myButton" @click="goChange(cell.parent_shelf,cell.id)">Змінити</button></td>
+    transform: translate(-50%, 0);" class="myButton" @click="goChange(cell.parent_shelf,cell.id)">Изменить</button></td>
+
       <td>{{cell.weight}}г<br><br><button style="position: relative;
     left: 50%;
-    transform: translate(-50%, 0);" class="myButton" @click="goHistory(cell.id,cell.cell_description.product_name)">Істория</button> </td>
-    </tr>
-    </tbody>
-  </table>
-
-
-
-
-
-  <table v-else class="styled-table">
-    <thead >
-    <tr>
-      <th style="max-width: 15px">id</th>
-      <th></th>
-      <th>Product</th>
-
-      <th>Weight</th>
-    </tr>
-    </thead>
-    <tbody v-for="cell in Cells" :key="cell.id">
-    <tr class="active-row">
-      <td>{{cell.cell_number}}</td>
-      <td ><img class="photo" :src="cell.cell_description.product_image" alt=""></td>
-
-      <td>{{cell.cell_description.product_name_en}}<br><br><button style="position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);" class="myButton" @click="goChange(cell.parent_shelf,cell.id)">Change</button></td>
-      <td>{{cell.weight}}г<br><br><button style="position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);" class="myButton" @click="goHistory(cell.id,cell.cell_description.product_name_en)">History</button> </td>
+    transform: translate(-50%, 0);" class="myButton" @click="goHistory(cell.id)">История</button> </td>
     </tr>
     </tbody>
   </table>
@@ -69,8 +40,8 @@ export default {
     goChange(ident, name) {
       this.$router.push({name: 'change', params: {ident: ident, name: name}})
     },
-    goHistory(id,name) {
-      this.$router.push({name: 'history', params: {id: id,name:name}})
+    goHistory(id) {
+      this.$router.push({name: 'history', params: {id: id}})
     },
     async LoadCells() {
       this.Cells = await axios({
@@ -81,14 +52,6 @@ export default {
         }
       }).then(response => response.data);
     },
-  },
-  computed: {
-    Language(){
-      if (localStorage.getItem('language')==='en')
-        return false
-      else
-        return true
-    }
   },
 
    created() {

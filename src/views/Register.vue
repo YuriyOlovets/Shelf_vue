@@ -1,24 +1,16 @@
 <template>
-  <div v-if="Language" class="wrapper">
+  <div class="wrapper">
     <div class="header">
-      <h3 class="sign-in" style="color: #008c8c">Реєстрація</h3>
+      <h3 class="sign-in" style="color: #008c8c">Регистрация</h3>
     </div>
     <div>
-      <input v-model="login" class="user-input" type="text" placeholder="Логін"  />
+      <input v-model="login" class="user-input" type="text" placeholder="Логин"  />
       <input v-model="password" type="password" placeholder="Пароль" />
-      <button class="myButton" @click="setRegister">Реєстрація</button>
+      <button class="myButton" @click="setRegister">Регистрация</button>
     </div>
-  </div>
 
-  <div v-else class="wrapper">
-    <div class="header">
-      <h3 class="sign-in" style="color: #008c8c">Registration</h3>
-    </div>
-    <div>
-      <input v-model="login" class="user-input" type="text" placeholder="Login"  />
-      <input v-model="password" type="password" placeholder="Password" />
-      <button class="myButton" @click="setRegister">Registration</button>
-    </div>
+
+
   </div>
 </template>
 
@@ -35,20 +27,11 @@ export default {
       response:'',
     }
   },
-  computed: {
-    Language(){
-      if (localStorage.getItem('language')==='en')
-        return false
-      else
-        return true
-    }
-
-  },
   methods: {
     async setRegister() {
       await axios({
         method: 'post',
-        url: 'http://smart-shelf.net/auth/users/',
+        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/auth/users/',
         data:{
           username: this.login,
           password: this.password

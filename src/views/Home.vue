@@ -3,28 +3,27 @@
       <main class="tm-main " >
         <!-- Search form -->
         <div class="row tm-row">
-           <div v-if="TrueShelf & Language" class="col-12" >
-              <h2 class="main">Мої продукти:</h2>
-           </div>
-          <div v-if="TrueShelf & !Language" class="col-12" >
-            <h2 class="main">My Product:</h2>
+          <div v-if="TrueShelf" class="col-12" >
+            <h2 class="main">My products:</h2>
           </div>
             <Cells v-if="TrueShelf"> </Cells>
 
-            <a href="#" v-if="!TrueShelf & Language"> <button @click="goAdd" class="myButton">Добавить новую полку</button></a>
-            <a href="#" v-if="!TrueShelf &!Language"> <button @click="goAdd" class="myButton">Add new shelf</button></a>
+            <a href="#" v-if="!TrueShelf"> <button @click="goAdd" class="myButton">Добавить новую полку</button></a>
 
+<!--                    <div v-if="TrueShelf" class="col-12" >-->
+<!--                      <h2 class="main">Мои продукты:</h2>-->
+<!--                    </div>-->
                   </div>
-                  <div v-if="Language" class="col-4 row tm-row" >
+                  <div class="col-4 row tm-row" >
                     <article class="col-12   tm-post">
                       <div>
                       <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
 
                         <thead>
                         <tr class="active-row">
-                          <th>ID </th>
-                          <th>Останнє з'єднання</th>
-                          <th>Відв'язати</th>
+                          <th>ID полки</th>
+                          <th>Последнее соединение</th>
+                          <th>Отвязать</th>
 
                         </tr>
                         </thead>
@@ -32,7 +31,7 @@
                         <tr>
                           <td><a>{{shelf.ident}}</a></td>
                           <td>{{formatDate(shelf.last_connect)}}</td>
-                          <td ><a href="#" style="color:red"><button @click="Delete(shelf.ident)" class="myButton">Відв'язати поличку</button></a></td>
+                          <td ><a href="#" style="color:red"><button @click="Delete(shelf.ident)" class="myButton">Отвязать полку</button></a></td>
 
 
                         </tr>
@@ -41,44 +40,6 @@
                       </table>
                       </div>
                     </article>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-        <div v-if="!Language" class="col-4 row tm-row" >
-          <article class="col-12   tm-post">
-            <div>
-              <table class="styled-table"  v-for="shelf in Shelf" :key="shelf.id">
-
-                <thead>
-                <tr class="active-row">
-                  <th>ID </th>
-                  <th>Last connect</th>
-                  <th>Disconnect</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td><a>{{shelf.ident}}</a></td>
-                  <td>{{formatDate(shelf.last_connect)}}</td>
-                  <td ><a href="#" style="color:red"><button @click="Delete(shelf.ident)" class="myButton">Disconnect</button></a></td>
-
-
-                </tr>
-
-                </tbody>
-              </table>
-            </div>
-          </article>
         </div>
 
       </main>
@@ -109,14 +70,7 @@ export default {
       else{
         return false
       }
-    },
-    Language(){
-      if (localStorage.getItem('language')==='en')
-        return false
-      else
-        return true
     }
-
   },
 
   methods : {
@@ -140,7 +94,7 @@ export default {
     {
       await axios({
             method: 'get',
-            url: this.$store.getters.getServerUrl + '/delete/'+ ident +'/',
+            url: this.$store.getters.getServerUrl + '/delete/'+ ident,
           });
       location.reload()
     },
@@ -160,7 +114,7 @@ export default {
   created() {
     this.login_check()
     this.loadShelf()
-    console.log(localStorage)
+
 
   }
 }

@@ -4,10 +4,11 @@
       <!-- Search form -->
       <div class="row tm-row">
         <div class="col-12" >
-          <h2 class="main">{{day}}</h2>
+          <h2 class="main">имя</h2>
         </div>
       </div>
       <br>
+      <a href='#'><button class="myButton">Просмотр по дням</button></a>
       <br><br>
 
       <div  class="row tm-row">

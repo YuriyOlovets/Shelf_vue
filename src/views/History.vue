@@ -4,14 +4,14 @@
       <!-- Search form -->
       <div class="row tm-row">
         <div class="col-12" >
-          <h2 class="main">{{name}}</h2>
+          <h2 class="main">имя</h2>
         </div>
       </div>
         <h3>Выбрать дату:</h3>
         <input v-model="day"  type="date" id="start" name="date" >
         <button @click="goDate(day,id)" type="submit" class="myButton">Смотреть</button>
       <br>
-      <button @click="goDayList(id,name)" class="myButton">Просмотр по дням</button>
+      <button @click="goDayList(id)" class="myButton">Просмотр по дням</button>
       <br><br>
 
       <div  class="row tm-row">
@@ -46,7 +46,7 @@ import axios from "axios";
 
 export default {
   name: "History",
-  props: ['id','name'],
+  props: ['id'],
   data() {
     return {
       History: [],
@@ -63,13 +63,12 @@ export default {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
       }).then(response => response.data);
-      console.log(this.History)
     },
     goDate(day,cell){
       this.$router.push({name:'date', params:{day:day,cell:cell}})
     },
     goDayList(list){
-      this.$router.push({name:'list', params:{list:list,name:name}})
+      this.$router.push({name:'list', params:{list:list}})
     }
   },
   created() {

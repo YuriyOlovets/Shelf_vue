@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <main class="tm-main">
+    <main v-if="Language" class="tm-main">
       <!-- Search form -->
       <h1>Введите название продукта</h1>
       <div class="login-form">
@@ -12,6 +12,22 @@
 
           <br><br>
           <button @click="ChangeCells" type="submit" style="min-width: 220px" class="myButton">Изменить</button>
+
+      </div>
+    </main>
+
+    <main v-else class="tm-main">
+      <!-- Search form -->
+      <h1>Enter product name</h1>
+      <div class="login-form">
+
+        <ejs-autocomplete  v-model = "product" :dataSource = "product_list" :fields = "fields" placeholder = 'Enter name'
+        >
+
+        </ejs-autocomplete>
+
+        <br><br>
+        <button @click="ChangeCells" type="submit" style="min-width: 220px" class="myButton">Change</button>
 
       </div>
 
@@ -31,10 +47,20 @@ export default {
   props:['ident','name'],
   data(){
     return{
+      i:'',
       product:'',
       product_list:[],
+      en_product_list:[],
       fields:{value:'product_name'},
       problem:'ddd',
+    }
+  },
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
     }
   },
   methods: {
@@ -59,11 +85,14 @@ export default {
     async LoadProducts(){
       this.product_list = await axios({
         method: 'get',
-        url: 'https://smart-shelf-bbc6g.ondigitalocean.app/api/v1/products/',
+        url: this.$store.getters.getServerUrl +'/products/',
         headers: {
           Authorization: 'Token ' + localStorage.getItem("auth_token")
         }
       }).then(response => response.data);
+      for (i in this.product_list){
+        console.log(this.i)
+      }
 
     },
   },

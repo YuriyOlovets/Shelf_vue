@@ -1,17 +1,35 @@
 <template>
-  <div class="wrapper">
+  <div v-if="Language" class="wrapper">
     <div class="header">
-      <h3 class="sign-in" style="color: #008c8c">Вход</h3>
+      <h3 class="sign-in" style="color: #008c8c">Вхід</h3>
       <a @click="toRegister">
       <div class="button">
-        Регистрация
+        Реєстрація
       </div></a>
     </div>
     <div>
-        <input v-model="login" class="user-input" type="text" name="name" id="name" placeholder="Логин"  />
+        <input v-model="login" class="user-input" type="text" name="name" id="name" placeholder="Логін"  />
         <input v-model="password" type="password" name="name" id="name" placeholder="Пароль" />
-        <button @click="setLogin">Войти</button>
+        <button @click="setLogin">Увійти</button>
       </div>
+
+
+
+  </div>
+
+  <div v-else class="wrapper">
+    <div class="header">
+      <h3 class="sign-in" style="color: #008c8c">Sign in</h3>
+      <a @click="toRegister">
+        <div class="button">
+          Register
+        </div></a>
+    </div>
+    <div>
+      <input v-model="login" class="user-input" type="text" name="name" id="name" placeholder="Login"  />
+      <input v-model="password" type="password" name="name" id="name" placeholder="password" />
+      <button @click="setLogin">Sign in</button>
+    </div>
 
 
 
@@ -29,11 +47,20 @@ export default {
       password: '',
     }
   },
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
+    }
+
+  },
   methods: {
     setLogin() {
 
       $.ajax({
-        url: "https://smart-shelf-bbc6g.ondigitalocean.app/auth/token/login/",
+        url: "http://smart-shelf.net/api/auth/token/login/",
         type: "POST",
         data: {
           username: this.login,

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div v-if="Language" class="container-fluid">
     <main class="tm-main">
       <!-- Search form -->
       <h1>Введите даные полки пожалуйста</h1>
@@ -8,6 +8,21 @@
           <input v-model="add" type="number"  name="ident" />
           <br><br>
           <button @click="AddShelf" type="submit" class="myButton">Добавить</button>
+
+      </div>
+    </main>
+  </div>
+
+
+  <div v-else class="container-fluid">
+    <main class="tm-main">
+      <!-- Search form -->
+      <h1>Enter shelf id please</h1>
+      <div class="login-form">
+        <h2>ID number</h2>
+        <input v-model="add" type="number"  name="ident" />
+        <br><br>
+        <button @click="AddShelf" type="submit" class="myButton" style="width: 100px">Add</button>
 
       </div>
     </main>
@@ -27,6 +42,14 @@ export default {
     return {
       add: '',
       info:'',
+    }
+  },
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
     }
   },
   methods: {

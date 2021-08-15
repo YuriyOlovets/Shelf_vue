@@ -1,14 +1,13 @@
 <template>
-  <div class="container-fluid">
+  <div v-if="Language" class="container-fluid">
     <main class="tm-main">
       <!-- Search form -->
       <div class="row tm-row">
         <div class="col-12" >
-          <h2 class="main">имя</h2>
+          <h2 class="main">{{day}}</h2>
         </div>
       </div>
       <br>
-      <a href='#'><button class="myButton">Просмотр по дням</button></a>
       <br><br>
 
       <div  class="row tm-row">
@@ -18,6 +17,43 @@
             <tr>
               <th>Вес</th>
               <th>Дата</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="cell in Day" :key="cell.id">
+              <td>{{cell.weight}}</td>
+              <td>{{cell.update_time}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </article>
+
+      </div>
+
+    </main>
+  </div>
+
+
+  <div v-if="!Language" class="container-fluid">
+    <main class="tm-main">
+      <!-- Search form -->
+      <div class="row tm-row">
+        <div class="col-12" >
+          <h2 class="main">{{day}}</h2>
+        </div>
+      </div>
+      <br>
+      <br><br>
+
+      <div  class="row tm-row">
+        <article class="col-12 col-md-6 tm-post">
+          <table>
+            <thead >
+            <tr>
+              <th>Weight</th>
+              <th>Date</th>
             </tr>
             </thead>
 
@@ -47,6 +83,14 @@ export default {
   return{
     Day:[]
   }
+  },
+  computed: {
+    Language(){
+      if (localStorage.getItem('language')==='en')
+        return false
+      else
+        return true
+    }
   },
   methods:{
     async LoadDay() {

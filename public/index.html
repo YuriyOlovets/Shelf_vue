@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Умная полка</title>
-
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <noscript>
@@ -12,5 +12,24 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <div id="root"></div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/webpack.config.js.js').then(function(registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                }).catch(function(err) {
+                    console.log(err)
+                });
+            });
+        } else {
+            console.log('service worker is not supported');
+        }
+    </script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <template>
-  <div  class="container-fluid">
-    <main v-if="Language"   class="tm-main">
+  <div v-if="Language" class="container-fluid">
+    <main  class="tm-main">
       <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
           <div class="col-md-10">
@@ -25,8 +25,11 @@
         </div>
       </div>
     </main>
+  </div>
 
-    <main v-if="!Language"  class="tm-main">
+
+  <div v-if="!Language" class="container-fluid">
+    <main  class="tm-main">
       <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
           <div class="col-md-10">
@@ -36,7 +39,7 @@
                 <div class="media-body">
                   <h6 class="media-title font-weight-semibold"> <a href="#" data-abc="true">{{dishes.dish_name_en}}</a> </h6>
                   <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{dishes.category}}</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{dishes.category_en}}</a></li>
                   </ul>
                   <p class="mb-3">{{dishes.describe_en}}</p>
                 </div>

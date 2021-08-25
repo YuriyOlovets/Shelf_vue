@@ -11,7 +11,7 @@
     <tbody v-for="prod in Delivery" :key="prod.id" >
     <tr class="active-row">
       <td><img class="photo" :src="prod.product[0].product_image"></td>
-      <td>{{prod.product[0].product_name_}}</td>
+      <td>{{prod.product[0].product_name}}</td>
       <td>1000г<br></td>
     </tr>
     </tbody>

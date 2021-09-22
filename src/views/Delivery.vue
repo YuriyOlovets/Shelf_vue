@@ -1,18 +1,22 @@
 <template>
   <main class="tm-main">
+    <h2 v-if="Language" style="font-size: 30px" class="main">Виберіть продукти для замовлення</h2>
   <table v-if="Language"  style="width: 350px" class="styled-table">
     <thead>
     <tr>
       <th></th>
       <th>Продукт</th>
       <th>Вага</th>
+
     </tr>
     </thead>
     <tbody v-for="prod in Delivery" :key="prod.id" >
     <tr class="active-row">
       <td><img class="photo" :src="prod.product[0].product_image"></td>
-      <td>{{prod.product[0].product_name_}}</td>
+      <td>{{prod.product[0].product_name}}</td>
       <td>1000г<br></td>
+      <td>  <input type="checkbox" id="scales" name="scales"
+                   checked></td>
     </tr>
     </tbody>
   </table>
@@ -29,6 +33,8 @@
         <td><img class="photo" :src="prod.product[0].product_image"></td>
         <td>{{prod.product[0].product_name_en}}</td>
         <td>1000g<br></td>
+        <td>  <input type="checkbox" id="scales" name="scales"
+                     checked></td>
       </tr>
       </tbody>
     </table>
@@ -74,6 +80,7 @@ export default {
   },
   created() {
     this.LoadDelivery()
+    console.log(this.Delivery)
 
   }
 }

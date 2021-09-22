@@ -14,75 +14,73 @@ import Register from "../views/Register";
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
-  },
-  {
-    path: "/add",
-    name:'add',
-    component: Add
-  },
-  {
-    path: "/change",
-    name:'change',
-    component: Change_name,
-    props: true
-  },
-  {
-    path: "/history",
-    name:'history',
-    component: History,
-    props: true
-  },
-  {
-    path: "/date",
-    name:'date',
-    component: date_filter,
-    props: true
-  },
-  {
-    path: "/day_list",
-    name:'list',
-    component: Day_list,
-    props: true
-  },
-  {
-    path: "/category",
-    name:'category',
-    component: Category,
-    props: true
-  },
-  {
-    path: "/menu",
-    name:'menu',
-    component: Menu,
-    props: true
-  },
-  {
-    path: "/delivery",
-    name:'delivery',
-    component: Delivery,
-    props: true
-  },
-  {
-    path: "/signup",
-    name:'register',
-    component: Register,
-    props: true
-  },
-]
-
 const router = new VueRouter({
     mode: 'history',
-    routes
+    routes:[
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: login
+      },
+      {
+        path: "/add",
+        name:'add',
+        component: Add
+      },
+      {
+        path: "/change",
+        name:'change',
+        component: Change_name,
+        props: true
+      },
+      {
+        path: "/history",
+        name:'history',
+        component: History,
+        props: true
+      },
+      {
+        path: "/date",
+        name:'date',
+        component: date_filter,
+        props: true
+      },
+      {
+        path: "/day_list",
+        name:'list',
+        component: Day_list,
+        props: true
+      },
+      {
+        path: "/category",
+        name:'category',
+        component: Category,
+        props: true
+      },
+      {
+        path: "/menu",
+        name:'menu',
+        component: Menu,
+        props: true
+      },
+      {
+        path: "/delivery",
+        name:'delivery',
+        component: Delivery,
+        props: true
+      },
+      {
+        path: "/signup",
+        name:'register',
+        component: Register,
+        props: true
+      },
+    ]
 })
 
 export default router

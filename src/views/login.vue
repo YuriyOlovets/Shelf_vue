@@ -60,7 +60,7 @@ export default {
     setLogin() {
 
       $.ajax({
-        url: "http://smart-shelf.net/api/auth/token/login/",
+        url: "http://127.0.0.1:8000/api/auth/token/login/",
         type: "POST",
         data: {
           username: this.login,

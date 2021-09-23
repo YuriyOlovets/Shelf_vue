@@ -11,6 +11,8 @@ import Category from "../components/Category";
 import Menu from "../components/Menu";
 import Delivery from "../views/Delivery";
 import Register from "../views/Register";
+import Product from "../views/Product";
+import Helper from "../components/Helper";
 
 Vue.use(VueRouter)
 
@@ -79,6 +81,17 @@ const router = new VueRouter({
         name:'register',
         component: Register,
         props: true
+      },
+      {
+        path: "/product",
+        name:'product',
+        component: Product,
+        props: true
+      },
+      {
+        path: "/helper",
+        name:'helper',
+        component: Helper,
       },
     ]
 })

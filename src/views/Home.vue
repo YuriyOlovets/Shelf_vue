@@ -92,7 +92,7 @@ import axios from 'axios'
 
 export default {
   name: 'Home',
-  components: {Cells},
+  components: {Cells,},
   data(){
     return{
       Shelf : [],

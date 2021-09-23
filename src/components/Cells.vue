@@ -10,22 +10,19 @@
     </tr>
     </thead>
     <tbody v-for="cell in Cells" :key="cell.id">
-    <tr class="active-row">
+  <tr class="active-row">
       <td>{{cell.cell_number}}</td>
-      <td ><img class="photo" :src="cell.cell_description.product_image" alt=""></td>
+    <a @click="goProduct(cell.cell_description.product_name_en)"><td ><img class="photo" :src="cell.cell_description.product_image" alt=""></td></a>
 
       <td>{{cell.cell_description.product_name}}<br><br><button style="position: relative;
     left: 50%;
     transform: translate(-50%, 0);" class="myButton" @click="goChange(cell.parent_shelf,cell.id)">Змінити</button></td>
       <td>{{cell.weight}}г<br><br><button style="position: relative;
     left: 50%;
-    transform: translate(-50%, 0);" class="myButton" @click="goHistory(cell.id,cell.cell_description.product_name)">Істория</button> </td>
+    transform: translate(-50%, 0);" class="myButton" @click="goHistory(cell.id,cell.cell_description.product_name)">Історiя</button> </td>
     </tr>
     </tbody>
   </table>
-
-
-
 
 
   <table v-else class="styled-table">
@@ -54,7 +51,9 @@
   </table>
 </template>
 
+
 <script>
+import $ from 'jquery'
 import axios from "axios";
 export default {
   name: "Cells",
@@ -71,6 +70,9 @@ export default {
     },
     goHistory(id,name) {
       this.$router.push({name: 'history', params: {id: id,name:name}})
+    },
+    goProduct(name){
+      this.$router.push({name:'product',params:{name:name}})
     },
     async LoadCells() {
       this.Cells = await axios({
@@ -93,11 +95,13 @@ export default {
 
    created() {
     this.LoadCells()
-    }
-
+    },
 }
 
+
+
 </script>
+
 
 <style scoped>
 .styled-table {
@@ -145,5 +149,7 @@ export default {
   width: 60px;
   height: 60px;
 }
+
+
 
 </style>

@@ -65,6 +65,10 @@
             <i class="fas fa-users"></i>
             Моє меню
           </a></li>
+          <li v-if="is_auth" class="tm-nav-item"><a @click="goHelper" href="#" class="tm-nav-link">
+            <i class="fa fa-magic"></i>
+            Мій помічник
+          </a></li>
           <li class="tm-nav-item" v-if="is_auth"><a @click="goDelivery" href="#" class="tm-nav-link" >
             <i  class="fas fa-pen"></i>
             Заказ</a>
@@ -132,6 +136,10 @@ export default {
     },
     goDelivery() {
       this.$router.push({name: "delivery"})
+      this.slide = false
+    },
+    goHelper(){
+      this.$router.push({name: "helper"})
       this.slide = false
     },
     english() {

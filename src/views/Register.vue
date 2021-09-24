@@ -48,7 +48,7 @@ export default {
     async setRegister() {
       await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/auth/users/',
+        url: 'http://smart-shelf.net/auth/users/',
         data:{
           username: this.login,
           password: this.password
